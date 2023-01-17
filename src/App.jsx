@@ -1,6 +1,7 @@
 // import React from "react";
 import "./App.css";
-import Child from "./Child";
+// import Child from "./Child";
+import Hooks from "./Hooks";
 
 // ファイル名とコンポーネント名は同じものにするのが一般的(大文字始まり)
 const App = () => {
@@ -26,13 +27,16 @@ const App = () => {
   //     </ul>
   //   </React.Fragment>
   // );
-  const message = "Hello World!";
-  const arr = ["React", "勉強中", { status: "初心者" }];
-  return (
-    <div>
-      <Child data={message} data2 data3={arr} {...{ arr }} />
-    </div>
-  );
+
+  // const message = "Hello World!";
+  // const arr = ["React", "勉強中", { status: "初心者" }];
+  // return (
+  //   <div>
+  //     <Child data={message} data2 data3={arr} {...{ arr }} />
+  //   </div>
+  // );
+
+  return <Hooks />;
 };
 
 export default App;
