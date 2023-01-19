@@ -9,7 +9,9 @@ const Learn = () => {
 
   /* ↓関数onClickAddTextを定義 */
   const onClickAddText = (event) => {
+    // addTextに入力したtextを反映させる
     setAddText(text);
+    // inputタグ(入力フォーム)とpタグ(入力中)のtextを空にする
     setText("");
     // submit処理の規定の動作(画面描画など)を防ぐ
     event.preventDefault();
@@ -17,6 +19,10 @@ const Learn = () => {
 
   return (
     <div>
+      {/* 
+        buttonタグのonClickイベントではEnterキーで入力確定できないため
+        formタグにonSubmitイベントを追加してonClickAddTextが動作するように変更した
+      */}
       <form onSubmit={onClickAddText}>
         {/* ↓value属性にstate変数「text」を指定 */}
         <input value={text} onChange={(event) => setText(event.target.value)} />
