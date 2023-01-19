@@ -1,7 +1,8 @@
 // import React from "react";
 import "./App.css";
 // import Child from "./Child";
-import Hooks from "./Hooks";
+// import Hooks from "./Hooks";
+import Learn from "./Learn";
 
 // ファイル名とコンポーネント名は同じものにするのが一般的(大文字始まり)
 const App = () => {
@@ -36,7 +37,9 @@ const App = () => {
   //   </div>
   // );
 
-  return <Hooks />;
+  // return <Hooks />;
+
+  return <Learn />;
 };
 
 export default App;
