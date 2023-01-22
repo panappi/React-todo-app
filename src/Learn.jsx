@@ -17,6 +17,10 @@ const Learn = () => {
     event.preventDefault();
   };
 
+  // CSS　インラインスタイル
+  const RED = { backgroundColor: "#D9BBA9" };
+  const isText = text;
+
   return (
     <div>
       {/* 
@@ -31,9 +35,9 @@ const Learn = () => {
         <button>追加</button>
 
         {/* ↓state変数「text」を表示する */}
-        <p>入力中：{text}</p>
+        <p style={{ opacity: isText ? 1 : 0 }}>入力中：{text}</p>
         {/* ↓state変数「addText」を表示する */}
-        <p>入力完了：{addText}</p>
+        <p style={RED}>入力完了：{addText}</p>
       </form>
     </div>
   );

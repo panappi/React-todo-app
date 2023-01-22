@@ -1,8 +1,9 @@
-// import React from "react";
+import React from "react";
 import "./App.css";
 // import Child from "./Child";
 // import Hooks from "./Hooks";
 import Learn from "./Learn";
+import Button from "./Button";
 
 // ファイル名とコンポーネント名は同じものにするのが一般的(大文字始まり)
 const App = () => {
@@ -39,7 +40,12 @@ const App = () => {
 
   // return <Hooks />;
 
-  return <Learn />;
+  return (
+    <React.Fragment>
+      <Learn />
+      <Button name={"ボタン"} />
+    </React.Fragment>
+  );
 };
 
 export default App;
