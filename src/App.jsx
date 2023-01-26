@@ -4,6 +4,7 @@ import "./App.css";
 // import Hooks from "./Hooks";
 import Learn from "./Learn";
 import Button from "./Button";
+import Section from "./Section";
 
 // ファイル名とコンポーネント名は同じものにするのが一般的(大文字始まり)
 const App = () => {
@@ -43,7 +44,8 @@ const App = () => {
   return (
     <React.Fragment>
       <Learn />
-      <Button name={"ボタン"} />
+      <Button name={"戻る"} />
+      <Section />
     </React.Fragment>
   );
 };

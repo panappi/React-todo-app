@@ -11,9 +11,8 @@ const PrimaryButton = styled.button`
 const Button = (props) => {
   return (
     <PrimaryButton
-      // className={props.button}
-      // onClick={() => props.onClick(props.argument)}
-      css="color: white"
+    // className={props.className}
+    // onClick={() => props.onClick(props.argument)}
     >
       {props.name}
     </PrimaryButton>
