@@ -1,10 +1,9 @@
 import React from "react";
-import "./App.css";
-// import Child from "./Child";
-// import Hooks from "./Hooks";
-import Learn from "./Learn";
-import Button from "./Button";
-import Section from "./Section";
+import "./styles/reset.css";
+import Header from "./components/Header";
+import { TaskList } from "./components/TaskList";
+import { Menu } from "./components/Menu";
+import { InputForm } from "./components/InputForm";
 
 // ファイル名とコンポーネント名は同じものにするのが一般的(大文字始まり)
 const App = () => {
@@ -31,21 +30,10 @@ const App = () => {
   //   </React.Fragment>
   // );
 
-  // const message = "Hello World!";
-  // const arr = ["React", "勉強中", { status: "初心者" }];
-  // return (
-  //   <div>
-  //     <Child data={message} data2 data3={arr} {...{ arr }} />
-  //   </div>
-  // );
-
-  // return <Hooks />;
-
   return (
     <React.Fragment>
-      <Learn />
-      <Button name={"戻る"} />
-      <Section />
+      <Header />
+      <InputForm />
     </React.Fragment>
   );
 };
