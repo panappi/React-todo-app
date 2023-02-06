@@ -9,6 +9,8 @@ export const useTasks = () => {
 
   const addTask = (value) => {
     setTasks([...tasks, { id: 4, title: value, isDone: false }]);
+
+    console.log(tasks);
   };
 
   const doneTasksLengths = tasks.filter((task) => task.isDone === true).length;

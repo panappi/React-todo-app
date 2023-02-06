@@ -1,39 +1,32 @@
 import React from "react";
 import "./styles/reset.css";
-import Header from "./components/Header";
+import { useState } from "react";
+import { Header } from "./components/Header";
 import { TaskList } from "./components/TaskList";
-import { Menu } from "./components/Menu";
+// import { Menu } from "./components/Menu";
 import { InputForm } from "./components/InputForm";
 
 // ファイル名とコンポーネント名は同じものにするのが一般的(大文字始まり)
 const App = () => {
-  // // JavaScriptが書ける場所
-  // const todos = [
-  //   { id: 1, title: "Todo 1", status: false },
-  //   { id: 2, title: "Todo 2", status: true },
-  //   { id: 3, title: "Todo 3", status: false },
-  // ];
-  // return (
-  //   // HTMLが書ける場所
-  //   <React.Fragment>
-  //     {/* returnできるのは1つのDOM要素だけなので、存在しないDOM要素として1つにまとめる役割がある */}
-  //     {/* 省略形は <></> */}
-  //     <div className="App">Hello world</div>
-  //     <ul>
-  //       {
-  //         // {}の中はJavaScriptが書ける場所
-  //         todos.map((todo) => {
-  //           return <li>{todo.title}</li>;
-  //         })
-  //       }
-  //     </ul>
-  //   </React.Fragment>
-  // );
+  const [tasks, setTasks] = useState([
+    { id: 1, title: "洗濯", isDone: false },
+    { id: 2, title: "洗濯", isDone: true },
+    { id: 3, title: "洗濯", isDone: false },
+  ]);
+  const addTask = (event, value) => {
+    setTasks([...tasks, { id: 4, title: value, isDone: false }]);
+    event.preventDefault();
+  };
+
+  // const doneTasksLengths = tasks.filter((task) => task.isDone === true).length;
+
+  console.log(tasks);
 
   return (
     <React.Fragment>
       <Header />
-      <InputForm />
+      <TaskList value={tasks} />
+      <InputForm addTask={addTask} placeholder={"テキストを入力"} />
     </React.Fragment>
   );
 };
