@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { TaskCard } from "./TaskCard";
 
-export const TaskList = ({ value }) => {
+export const TaskList = ({ tasks, removeTask }) => {
   return (
     <StyledTaskList>
-      <TaskCard tasks={value} />
+      <TaskCard tasks={tasks} removeTask={removeTask} />
     </StyledTaskList>
   );
 };
