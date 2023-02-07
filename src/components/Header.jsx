@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
-export const Header = () => {
+export const Header = ({ doingTasksLength }) => {
   return (
     <StyledHeader>
       <div>
         <h1>Todoリスト</h1>
       </div>
-      <div id="doingTaskCount"></div>
+      <div>{doingTasksLength}</div>
     </StyledHeader>
   );
 };

@@ -1,21 +1,16 @@
-import React from "react";
 import styled from "styled-components";
 import { RemoveButton } from "./RemoveButton";
+import { StatusButton } from "./StatusButton";
 // import { useTasks } from "../hooks/useTasks";
 
-export const TaskCard = ({ tasks, removeTask }) => {
+export const TaskCard = ({ task, removeTask, toggleTaskStatus }) => {
   // const { tasks } = useTasks;
   return (
-    <>
-      {tasks.map((todo) => {
-        return (
-          <StyledTaskCard>
-            <div>{todo.title}</div>
-            <RemoveButton id={todo.id} tasks={tasks} removeTask={removeTask} />
-          </StyledTaskCard>
-        );
-      })}
-    </>
+    <StyledTaskCard>
+      <StatusButton id={task.id} toggleTaskStatus={toggleTaskStatus} />
+      <div>{task.title}</div>
+      <RemoveButton id={task.id} removeTask={removeTask} />
+    </StyledTaskCard>
   );
 };
 
