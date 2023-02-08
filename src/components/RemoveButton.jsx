@@ -5,7 +5,6 @@ export const RemoveButton = ({ id, removeTask }) => {
     <StyledRemoveButton
       onClick={() => {
         removeTask(id);
-        console.log(id);
       }}
     >
       削除
