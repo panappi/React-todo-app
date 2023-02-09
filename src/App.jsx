@@ -1,6 +1,7 @@
 import React from "react";
-import "./styles/reset.css";
 import { useState } from "react";
+import "./styles/reset.css";
+import styled from "styled-components";
 import { Header } from "./components/Header";
 import { TaskList } from "./components/TaskList";
 import { Menu } from "./components/Menu";
@@ -63,11 +64,10 @@ const App = () => {
   console.log("@@@ ", tasks);
 
   return (
-    <React.Fragment>
+    <StyledApp>
       <Header doingTasksLength={doingTasksLength} />
       <Menu
         doneTasksLength={doneTasksLength}
-        tasks={tasks}
         filter={filter}
         toggleFilter={toggleFilter}
       />
@@ -78,8 +78,12 @@ const App = () => {
         toggleTaskStatus={toggleTaskStatus}
       />
       <InputForm addTask={addTask} placeholder={"テキストを入力"} />
-    </React.Fragment>
+    </StyledApp>
   );
 };
+
+export const StyledApp = styled.div`
+  padding: 50px 4% 0;
+`;
 
 export default App;

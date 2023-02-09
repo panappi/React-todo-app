@@ -1,6 +1,7 @@
 // import { useTasks } from "../hooks/useTasks";
 import { useState } from "react";
 import styled from "styled-components";
+import { Plus } from "akar-icons";
 import { StatusButton } from "./StatusButton";
 
 export const InputForm = ({ addTask, placeholder }) => {
@@ -21,7 +22,9 @@ export const InputForm = ({ addTask, placeholder }) => {
           value={text}
           onChange={(event) => setText(event.target.value)}
         />
-        <button>追加</button>
+        <button className="form_btn">
+          <Plus size={16} />
+        </button>
       </form>
     </StyledInputForm>
   );
@@ -29,6 +32,10 @@ export const InputForm = ({ addTask, placeholder }) => {
 
 export const StyledInputForm = styled.div`
   display: flex;
+  font-size: 16px;
+  .form_btn {
+    color: #dca9a0;
+  }
 `;
 
 // useRefは使用せず、このコンポーネント内で入力テキストを管理するuseStateを定義する

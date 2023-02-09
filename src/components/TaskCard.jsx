@@ -17,4 +17,9 @@ export const TaskCard = ({ task, removeTask, toggleTaskStatus }) => {
 export const StyledTaskCard = styled.li`
   display: flex;
   justify-content: space-between;
+  padding: 6px 0;
+  font-size: 16px;
+  border-bottom-color: #ececec;
+  border-bottom-style: solid;
+  border-bottom-width: 1.2px;
 `;
