@@ -17,8 +17,6 @@ export const StatusButton = ({ id, isDone, toggleTaskStatus, colorList }) => {
 export const StyledStatusButton = styled.button`
   width: 30px;
   min-height: 30px;
-  vertical-align: middle;
-  /* border: none; */
   .status_btn {
     position: relative;
     width: 20px;

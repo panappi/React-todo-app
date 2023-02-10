@@ -6,7 +6,7 @@ import { StatusButton } from "./StatusButton";
 export const TaskCard = ({ task, removeTask, toggleTaskStatus, colorList }) => {
   // const { tasks } = useTasks;
   return (
-    <StyledTaskCard colorList={colorList}>
+    <StyledTaskCard isDone={task.isDone} colorList={colorList}>
       <StatusButton
         id={task.id}
         isDone={task.isDone}
@@ -26,10 +26,12 @@ export const TaskCard = ({ task, removeTask, toggleTaskStatus, colorList }) => {
 };
 
 export const StyledTaskCard = styled.li`
-  padding: 6px 0;
+  /* padding: 6px 0; */
   display: flex;
+  align-items: center;
   font-size: 16px;
   .card_border {
+    padding: 6px 0;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -41,5 +43,6 @@ export const StyledTaskCard = styled.li`
   .card_text {
     display: flex;
     align-items: center;
+    color: ${(props) => (props.isDone ? props.colorList.SUB : "black")};
   }
 `;

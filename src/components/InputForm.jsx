@@ -35,9 +35,9 @@ export const StyledInputForm = styled.div`
   margin: 0 0 0 4%;
   display: flex;
   align-items: center;
-  padding: 6px 0;
   font-size: 16px;
   .form_border {
+    padding: 6px 0;
     width: 100%;
     /* border-bottom-color: #ececec; */
     border-bottom-color: ${(props) => [props.colorList.BORDER]};
@@ -45,6 +45,7 @@ export const StyledInputForm = styled.div`
     border-bottom-width: 1.2px;
   }
   .form_btn {
+    vertical-align: middle;
     /* color: #dca9a0; */
     color: ${(props) => [props.colorList.MAIN]};
   }
