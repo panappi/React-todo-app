@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
-export const Header = ({ doingTasksLength, colorList }) => {
+export const Header = ({ doingTasksLength }) => {
   return (
-    <StyledHeader colorList={colorList}>
-      <div>
-        <h1>Todoリスト</h1>
-      </div>
+    <StyledHeader>
+      {/* <div> */}
+      <h1>Todoリスト</h1>
+      {/* </div> */}
       <div>{doingTasksLength}</div>
     </StyledHeader>
   );
@@ -17,7 +17,8 @@ export const StyledHeader = styled.header`
   justify-content: space-between;
   align-items: center;
   /* color: #dca9a0; */
-  color: ${(props) => [props.colorList.MAIN]};
+  /* color: ${(props) => props.theme.MAIN}; */
+  color: ${({ theme }) => theme.MAIN};
   font-size: 32px;
   font-weight: bold;
 `;

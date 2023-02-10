@@ -1,15 +1,15 @@
 import styled from "styled-components";
 
-export const StatusButton = ({ id, isDone, toggleTaskStatus, colorList }) => {
+export const StatusButton = ({ id, isDone, toggleTaskStatus, theme }) => {
   return (
     <StyledStatusButton
       isDone={isDone}
-      colorList={colorList}
       onClick={() => {
         toggleTaskStatus(id);
       }}
     >
       <div className="status_btn"></div>
+      {/* FIXME: 不要なdivはできる限り作らないようにする */}
     </StyledStatusButton>
   );
 };
@@ -23,7 +23,7 @@ export const StyledStatusButton = styled.button`
     height: 20px;
     /* border-color: #c6c6c6; */
     border-color: ${(props) =>
-      props.isDone ? props.colorList.MAIN : props.colorList.SUB};
+      props.isDone ? props.theme.MAIN : props.theme.SUB};
     border-style: solid;
     border-width: 1.2px;
     border-radius: 50%;
@@ -37,12 +37,12 @@ export const StyledStatusButton = styled.button`
       width: 12px;
       height: 12px;
       /* border-color: #dca9a0; */
-      border-color: ${(props) => [props.colorList.MAIN]};
+      border-color: ${(props) => props.theme.MAIN};
       border-style: solid;
       border-width: 1.2px;
       border-radius: 50%;
       /* background-color: #dca9a0; */
-      background-color: ${(props) => [props.colorList.MAIN]};
+      background-color: ${(props) => props.theme.MAIN};
     }
   }
 `;

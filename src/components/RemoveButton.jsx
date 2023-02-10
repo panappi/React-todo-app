@@ -1,10 +1,9 @@
 import styled from "styled-components";
 import { TrashCan } from "akar-icons";
 
-export const RemoveButton = ({ id, removeTask, colorList }) => {
+export const RemoveButton = ({ id, removeTask }) => {
   return (
     <StyledRemoveButton
-      colorList={colorList}
       onClick={() => {
         removeTask(id);
       }}
@@ -31,9 +30,9 @@ export const StyledRemoveButton = styled.div`
     justify-content: center;
     align-items: center;
     /* color: #dca9a0; */
-    color: ${(props) => [props.colorList.MAIN]};
+    color: ${(props) => props.theme.MAIN};
     /* border-color: #dca9a0; */
-    border-color: ${(props) => [props.colorList.MAIN]};
+    border-color: ${(props) => props.theme.MAIN};
     border-style: solid;
     border-width: 1.2px;
     border-radius: 50%;

@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export const Menu = ({ doneTasksLength, filter, toggleFilter, colorList }) => {
+export const Menu = ({ doneTasksLength, filter, toggleFilter }) => {
   return (
-    <StyledMenu colorList={colorList}>
+    <StyledMenu>
       <div className="menu__counter">実行済み ({doneTasksLength}件)</div>
       <div
         className="menu__filter"
@@ -22,13 +22,13 @@ export const StyledMenu = styled.div`
   justify-content: space-between;
   .menu__counter {
     /* color: #c6c6c6; */
-    color: ${(props) => [props.colorList.SUB]};
+    color: ${(props) => props.theme.SUB};
     font-size: 12px;
   }
   .menu__filter {
     padding-bottom: 4px;
     /* color: #dca9a0; */
-    color: ${(props) => [props.colorList.MAIN]};
+    color: ${(props) => props.theme.MAIN};
     font-size: 12px;
   }
 `;
