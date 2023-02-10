@@ -4,13 +4,14 @@ import styled from "styled-components";
 import { Plus } from "akar-icons";
 import { StatusButton } from "./StatusButton";
 
-export const InputForm = ({ addTask, placeholder }) => {
+export const InputForm = ({ addTask, placeholder, colorList }) => {
   // const { addTask } = useTasks;
   const [text, setText] = useState("");
   return (
-    <StyledInputForm>
-      <StatusButton />
+    <StyledInputForm colorList={colorList}>
+      <StatusButton colorList={colorList} />
       <form
+        className="form_border"
         onSubmit={(event) => {
           addTask(event, text);
           setText("");
@@ -31,10 +32,21 @@ export const InputForm = ({ addTask, placeholder }) => {
 };
 
 export const StyledInputForm = styled.div`
+  margin: 0 0 0 4%;
   display: flex;
+  align-items: center;
+  padding: 6px 0;
   font-size: 16px;
+  .form_border {
+    width: 100%;
+    /* border-bottom-color: #ececec; */
+    border-bottom-color: ${(props) => [props.colorList.BORDER]};
+    border-bottom-style: solid;
+    border-bottom-width: 1.2px;
+  }
   .form_btn {
-    color: #dca9a0;
+    /* color: #dca9a0; */
+    color: ${(props) => [props.colorList.MAIN]};
   }
 `;
 

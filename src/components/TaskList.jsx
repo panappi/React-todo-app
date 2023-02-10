@@ -1,14 +1,18 @@
 import styled from "styled-components";
 import { TaskCard } from "./TaskCard";
 
-export const TaskList = ({ tasks, filter, removeTask, toggleTaskStatus }) => {
+export const TaskList = ({
+  tasks,
+  filter,
+  removeTask,
+  toggleTaskStatus,
+  colorList,
+}) => {
   return (
-    <StyledTaskList>
+    <StyledTaskList colorList={colorList}>
       {tasks
         .filter((task) => {
           return filter === "ALL" ? true : task.isDone === false;
-          // if (filter === "ALL") return true;
-          // if (filter === "DOING") return task.isDone === false;
         })
         .map((task) => {
           return (
@@ -16,6 +20,7 @@ export const TaskList = ({ tasks, filter, removeTask, toggleTaskStatus }) => {
               task={task}
               removeTask={removeTask}
               toggleTaskStatus={toggleTaskStatus}
+              colorList={colorList}
             />
           );
         })}
@@ -23,4 +28,10 @@ export const TaskList = ({ tasks, filter, removeTask, toggleTaskStatus }) => {
   );
 };
 
-export const StyledTaskList = styled.ul``;
+export const StyledTaskList = styled.ul`
+  margin: 0 0 0 4%;
+  /* border-bottom-color: #ececec; */
+  border-top-color: ${(props) => [props.colorList.BORDER]};
+  border-top-style: solid;
+  border-top-width: 1.2px;
+`;

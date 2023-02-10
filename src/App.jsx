@@ -9,7 +9,14 @@ import { InputForm } from "./components/InputForm";
 
 // ファイル名とコンポーネント名は同じものにするのが一般的(大文字始まり)
 const App = () => {
-  // state
+  //////////// style ////////////
+  const colorList = {
+    MAIN: "#dca9a0",
+    SUB: "#c6c6c6",
+    BORDER: "#ececec",
+  };
+
+  //////////// state ////////////
   // タスクを管理する
   const [tasks, setTasks] = useState([
     { id: 0, title: "洗濯", isDone: false },
@@ -19,6 +26,7 @@ const App = () => {
   // 表示するタスクのフィルターを管理する
   const [filter, setFilter] = useState("ALL");
 
+  //////////// set関数 ////////////
   // タスクをtasksに追加する
   const addTask = (event, text) => {
     setTasks([...tasks, { id: tasks.length, title: text, isDone: false }]);
@@ -65,25 +73,31 @@ const App = () => {
 
   return (
     <StyledApp>
-      <Header doingTasksLength={doingTasksLength} />
+      <Header doingTasksLength={doingTasksLength} colorList={colorList} />
       <Menu
         doneTasksLength={doneTasksLength}
         filter={filter}
         toggleFilter={toggleFilter}
+        colorList={colorList}
       />
       <TaskList
         tasks={tasks}
         filter={filter}
         removeTask={removeTask}
         toggleTaskStatus={toggleTaskStatus}
+        colorList={colorList}
       />
-      <InputForm addTask={addTask} placeholder={"テキストを入力"} />
+      <InputForm
+        addTask={addTask}
+        placeholder={"テキストを入力"}
+        colorList={colorList}
+      />
     </StyledApp>
   );
 };
 
 export const StyledApp = styled.div`
-  padding: 50px 4% 0;
+  /* padding: 50px 4% 0; */
 `;
 
 export default App;
