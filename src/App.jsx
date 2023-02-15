@@ -7,9 +7,12 @@ import { Header } from "./components/Header";
 import { TaskList } from "./components/TaskList";
 import { Menu } from "./components/Menu";
 import { InputForm } from "./components/InputForm";
+import { StoreToDb } from "./learn/StoreToDb";
+import { StoreFromDb } from "./learn/StoreFromDb";
 
 // ファイル名とコンポーネント名は同じものにするのが一般的(大文字始まり)
 const App = () => {
+  console.log(process.env.REACT_APP_HELLO_WORLD);
   //////////// state ////////////
   // タスクを管理する
   const [tasks, setTasks] = useState([
@@ -64,8 +67,6 @@ const App = () => {
   // 実行中タスクの数を数える
   const doingTasksLength = tasks.filter((task) => !task.isDone).length;
 
-  console.log("@@@ ", tasks);
-
   return (
     <ThemeProvider theme={theme}>
       {/* <StyledApp> */}
@@ -82,7 +83,10 @@ const App = () => {
         toggleTaskStatus={toggleTaskStatus}
       />
       <InputForm addTask={addTask} placeholder={"テキストを入力"} />
-      {/* </StyledApp> */}
+
+      {/* FireStoreとの通信確認 */}
+      <StoreToDb />
+      <StoreFromDb />
     </ThemeProvider>
   );
 };
