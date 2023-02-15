@@ -1,6 +1,8 @@
 import React from "react";
-import "./styles/reset.css";
 import { useState } from "react";
+import "./styles/reset.css";
+import { ThemeProvider } from "styled-components";
+import { theme } from "./styles/theme";
 import { Header } from "./components/Header";
 import { TaskList } from "./components/TaskList";
 import { Menu } from "./components/Menu";
@@ -8,20 +10,23 @@ import { InputForm } from "./components/InputForm";
 
 // ファイル名とコンポーネント名は同じものにするのが一般的(大文字始まり)
 const App = () => {
-  // state
+  //////////// state ////////////
   // タスクを管理する
   const [tasks, setTasks] = useState([
-    { id: 0, title: "洗濯", isDone: false },
-    { id: 1, title: "洗濯", isDone: false },
-    { id: 2, title: "洗濯", isDone: false },
+    { id: 0, title: "洗濯1", isDone: false },
+    { id: 1, title: "洗濯2", isDone: false },
+    { id: 2, title: "洗濯3", isDone: false },
   ]);
   // 表示するタスクのフィルターを管理する
   const [filter, setFilter] = useState("ALL");
+  // const [isFilter, setIsFilter] = useState(false)
+  // FIXME: booleanで管理して、表示するテキストと分ける
 
+  //////////// set関数 ////////////
   // タスクをtasksに追加する
   const addTask = (event, text) => {
-    setTasks([...tasks, { id: tasks.length, title: text, isDone: false }]);
     event.preventDefault();
+    setTasks([...tasks, { id: tasks.length, title: text, isDone: false }]);
   };
   // タスクをtasksから削除しidを振り直す
   const removeTask = (id) => {
@@ -39,7 +44,6 @@ const App = () => {
   // フィルターを切り替える
   const toggleFilter = (value) => {
     setFilter(value === "ALL" ? "DOING" : "ALL");
-    console.log(value);
   };
   // タスクの状態を切り替える
   const toggleTaskStatus = (id) => {
@@ -48,7 +52,7 @@ const App = () => {
         if (tasks.id === id) {
           return {
             ...tasks,
-            isDone: tasks.isDone === false ? true : false,
+            isDone: !tasks.isDone,
           };
         }
         return tasks;
@@ -56,18 +60,18 @@ const App = () => {
     );
   };
   // 実行済みタスクの数を数える
-  const doneTasksLength = tasks.filter((task) => task.isDone === true).length;
+  const doneTasksLength = tasks.filter((task) => task.isDone).length;
   // 実行中タスクの数を数える
-  const doingTasksLength = tasks.filter((task) => task.isDone === false).length;
+  const doingTasksLength = tasks.filter((task) => !task.isDone).length;
 
   console.log("@@@ ", tasks);
 
   return (
-    <React.Fragment>
+    <ThemeProvider theme={theme}>
+      {/* <StyledApp> */}
       <Header doingTasksLength={doingTasksLength} />
       <Menu
         doneTasksLength={doneTasksLength}
-        tasks={tasks}
         filter={filter}
         toggleFilter={toggleFilter}
       />
@@ -78,8 +82,13 @@ const App = () => {
         toggleTaskStatus={toggleTaskStatus}
       />
       <InputForm addTask={addTask} placeholder={"テキストを入力"} />
-    </React.Fragment>
+      {/* </StyledApp> */}
+    </ThemeProvider>
   );
 };
+
+// export const StyledApp = styled.div`
+//   /* padding: 50px 4% 0; */
+// `;
 
 export default App;

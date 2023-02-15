@@ -6,9 +6,7 @@ export const TaskList = ({ tasks, filter, removeTask, toggleTaskStatus }) => {
     <StyledTaskList>
       {tasks
         .filter((task) => {
-          return filter === "ALL" ? true : task.isDone === false;
-          // if (filter === "ALL") return true;
-          // if (filter === "DOING") return task.isDone === false;
+          return !task.isDone;
         })
         .map((task) => {
           return (
@@ -19,8 +17,26 @@ export const TaskList = ({ tasks, filter, removeTask, toggleTaskStatus }) => {
             />
           );
         })}
+      {filter !== "All" &&
+        tasks
+          .filter((task) => task.isDone)
+          .map((task) => {
+            return (
+              <TaskCard
+                task={task}
+                removeTask={removeTask}
+                toggleTaskStatus={toggleTaskStatus}
+              />
+            );
+          })}
     </StyledTaskList>
   );
 };
 
-export const StyledTaskList = styled.ul``;
+export const StyledTaskList = styled.ul`
+  margin: 0 0 0 4%;
+  /* border-bottom-color: #ececec; */
+  border-top-color: ${(props) => props.theme.BORDER};
+  border-top-style: solid;
+  border-top-width: 1.2px;
+`;
