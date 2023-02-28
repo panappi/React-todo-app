@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
-import { collection, getDocs, doc, getDoc } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
+// import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase/config";
 
 export const StoreFromDb = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    const usersCollectionRef = collection(db, "users");
+    const usersCollectionRef = collection(db, "taskList");
     // console.log(usersCollectionRef);
 
     // コレクションの中にあるドキュメントを取得するためにgetDocs関数を利用する
@@ -40,20 +41,20 @@ export const StoreFromDb = () => {
 
   // ドキュメントのidを指定してデータを取得する
   // collection関数ではなくdoc関数を利用する(DocumentSnapshotが戻される)
-  const userDocumentRef = doc(db, "users", "rFnc5ULTtZ1gavTNyhsY");
-  getDoc(userDocumentRef).then((documentSnapshot) => {
-    // DocumentSnapshotに含まれるexistsメソッドを利用してデータの有無を確認する(ある場合true)
-    if (documentSnapshot.exists()) {
-      console.log("指定したIDのデータ: ", documentSnapshot.data());
-    } else {
-      console.log("No such document!");
-    }
-  });
+  // const userDocumentRef = doc(db, "taskList", "ドキュメントのid");
+  // getDoc(userDocumentRef).then((documentSnapshot) => {
+  //   // DocumentSnapshotに含まれるexistsメソッドを利用してデータの有無を確認する(ある場合true)
+  //   if (documentSnapshot.exists()) {
+  //     console.log("指定したIDのデータ: ", documentSnapshot.data());
+  //   } else {
+  //     console.log("No such document!");
+  //   }
+  // });
 
   return (
     <div>
       {users.map((user) => (
-        <div key={user.id}>{user.name}</div>
+        <div key={user.id}>{user.title}</div>
       ))}
     </div>
   );

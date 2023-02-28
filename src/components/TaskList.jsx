@@ -17,7 +17,8 @@ export const TaskList = ({ tasks, filter, removeTask, toggleTaskStatus }) => {
             />
           );
         })}
-      {filter !== "All" &&
+      {/* &&の左側の条件式がTrueのとき右側を返す */}
+      {filter !== "DOING" &&
         tasks
           .filter((task) => task.isDone)
           .map((task) => {

@@ -1,11 +1,9 @@
-// import { useTasks } from "../hooks/useTasks";
 import { useState } from "react";
 import styled from "styled-components";
 import { Plus } from "akar-icons";
 import { StatusButton } from "./StatusButton";
 
-export const InputForm = ({ addTask, placeholder }) => {
-  // const { addTask } = useTasks;
+export const InputForm = ({ addTask, getTasklist, placeholder }) => {
   const [text, setText] = useState("");
   return (
     <StyledInputForm>
@@ -14,6 +12,7 @@ export const InputForm = ({ addTask, placeholder }) => {
         className="form_border"
         onSubmit={(event) => {
           addTask(event, text);
+          getTasklist();
           setText("");
         }}
       >
